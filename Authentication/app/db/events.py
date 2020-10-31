@@ -1,4 +1,3 @@
-from .mongodb import db
 from fastapi import FastAPI
 from loguru import logger
 from motor.motor_asyncio import AsyncIOMotorClient
