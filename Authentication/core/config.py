@@ -1,6 +1,7 @@
 import os
 from starlette.datastructures import CommaSeparatedStrings, Secret
 from databases import DatabaseURL
+import logging
 
 API_V1_STR = "/api"
 
@@ -34,3 +35,7 @@ tags_collection_name = "tags"
 users_collection_name = "users"
 comments_collection_name = "commentaries"
 followers_collection_name = "followers"
+
+logging.basicConfig(format='%(levelname)-3s [%(filename)s:%(lineno)d] %(message)s',
+    datefmt='%Y-%m-%d:%H:%M:%S',
+    level=logging.DEBUG)

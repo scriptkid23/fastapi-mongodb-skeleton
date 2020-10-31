@@ -2,11 +2,12 @@ from fastapi import FastAPI
 from starlette.exceptions import HTTPException
 from starlette.middleware.cors import CORSMiddleware
 from starlette.status import HTTP_422_UNPROCESSABLE_ENTITY
-
+import logging
 from api.api import router as api_router
 from core.config import ALLOWED_HOSTS, API_V1_STR, PROJECT_NAME
 from core.errors import http_422_error_handler, http_error_handler
 from database.mongodb_util import close_mongo_connection, connect_to_mongo
+
 
 app = FastAPI(title=PROJECT_NAME)
 
