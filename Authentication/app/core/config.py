@@ -1,5 +1,6 @@
 import logging
 import sys
+
 from typing import List
 
 from databases import DatabaseURL
@@ -11,7 +12,6 @@ from app.core.logging import InterceptHandler
 
 API_PREFIX = "/api"
 
-JWT_TOKEN_PREFIX = "Token"  # noqa: S105
 VERSION = "0.0.0"
 
 config = Config(".env")
@@ -22,14 +22,18 @@ DATABASE_URL: DatabaseURL = config("DB_CONNECTION", cast=DatabaseURL)
 MAX_CONNECTIONS_COUNT: int = config("MAX_CONNECTIONS_COUNT", cast=int, default=10)
 MIN_CONNECTIONS_COUNT: int = config("MIN_CONNECTIONS_COUNT", cast=int, default=10)
 
-SECRET_KEY: Secret = config("SECRET_KEY", cast=Secret)
-
 PROJECT_NAME: str = config("PROJECT_NAME", default="FastAPI example application")
 ALLOWED_HOSTS: List[str] = config(
     "ALLOWED_HOSTS",
     cast=CommaSeparatedStrings,
     default="",
 )
+# jwt configuration
+
+SECRET_KEY = 'bec7874c5500cc098cf7a881d46be8925e759892c8669150ab7354cccd4bb8be'
+ALGORITHM = 'HS256'
+ACCESS_TOKEN_EXPIRE_MINUTES = 30 
+JWT_SUBJECT = "access"
 
 # logging configuration
 

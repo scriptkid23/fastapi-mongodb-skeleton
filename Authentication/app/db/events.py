@@ -23,9 +23,7 @@ async def connect_to_db(app: FastAPI) -> None:
         minPoolSize=MIN_CONNECTIONS_COUNT,
         maxPoolSize=MAX_CONNECTIONS_COUNT
     )
-    logger.info(await app.state.pool['user'].find_one({"name" : "123"}))
     instance.init(app.state.pool)
-    
     logger.info("Connection established")
 
 
