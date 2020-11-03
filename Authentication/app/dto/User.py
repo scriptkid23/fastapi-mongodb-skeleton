@@ -1,6 +1,12 @@
 from pydantic import BaseModel, EmailStr
 from .RWSchema import RWSchema
 
+class User(BaseModel):
+    username: str
+    email: EmailStr
+    image: str
+    disabled: bool
+    
 class InputSignupForm(BaseModel):
     username: str
     email: EmailStr
